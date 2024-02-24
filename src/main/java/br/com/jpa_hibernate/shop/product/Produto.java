@@ -9,17 +9,17 @@ import java.time.LocalDate;
 public class Produto {
 
   private final LocalDate createdAt = LocalDate.now();
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
   private String nome;
   private String descricao;
   private BigDecimal preco;
-
   @ManyToOne
   private Categoria categoria;
+
+  public Produto() {
+  }
 
   public Categoria getCategoria() {
     return categoria;
