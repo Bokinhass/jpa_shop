@@ -2,10 +2,13 @@ package br.com.jpa_hibernate.shop.product;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "produtos")
 public class Produto {
+
+  private final LocalDate createdAt = LocalDate.now();
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,12 +18,15 @@ public class Produto {
   private String descricao;
   private BigDecimal preco;
 
-  public Long getId() {
-    return id;
+  @ManyToOne
+  private Categoria categoria;
+
+  public Categoria getCategoria() {
+    return categoria;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void setCategoria(Categoria categoria) {
+    this.categoria = categoria;
   }
 
   public String getNome() {
